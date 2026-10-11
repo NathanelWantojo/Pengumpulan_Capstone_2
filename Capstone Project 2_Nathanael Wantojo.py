@@ -8,8 +8,23 @@ data_reservasi = {
         'Tipe Kamar' : 'Deluxe',
         'Tanggal Check In' : '12 Oktober 2026',
         'Lama Menginap' : '2 Hari'
+        },
+    'KB02':{
+        'Nama' : 'Kevin',
+        'Tipe Kamar' : 'Single',
+        'Tanggal Check In' : '30 Oktober 2026',
+        'Lama Menginap' : '5 Hari'
         }
 }
+
+def tampilkan_tabel():
+    print(f"\n{'Kode':<10} {'Nama':<20} {'Tipe Kamar':<15} {'Check In':<22} {'Lama Menginap':<15}")
+    print("-" * 90)
+
+    for kode, detail in data_reservasi.items():
+        print(f"{kode:<10} {detail['Nama']:<20} {detail['Tipe Kamar']:<15} {detail['Tanggal Check In']:<22} {detail['Lama Menginap']:<15}")
+
+    print("-" * 90)
 
 ##### MENU UTAMA #####
 while True:
@@ -22,13 +37,14 @@ while True:
             print('\n1. Lihat Semua Reservasi')
             print('2. Cari Reservasi')
             print('3. Kembali ke Menu Utama')
+    
             menu_1=input('Masukkan Menu Pilihan Anda: ').strip()
             
             if menu_1 == '1':
                 
                 if data_reservasi:
                     print('Berikut data semua reservasi\n')
-                    print(data_reservasi)
+                    tampilkan_tabel()
                 else:
                     print('tidak ada data')
             
@@ -54,7 +70,7 @@ while True:
     elif pilih_menu == "2":
         
         while True:
-            print('\n1. Jadwalkan Reservasi\n2.Kembali ke Menu Utama')
+            print('\n1. Jadwalkan Reservasi\n2. Kembali ke Menu Utama')
             menu_2=input('Masukkan Menu Pilihan Anda: ').strip()
             
             if menu_2 == '1':
@@ -102,7 +118,7 @@ while True:
             if menu_3 == '1':
                
                 if data_reservasi:
-                    print(data_reservasi)
+                    tampilkan_tabel()
                     
                     kode_edit = input('Masukkan Kode yang akan Anda Ubah: ').strip().upper()
                     if kode_edit in data_reservasi:
@@ -144,7 +160,7 @@ while True:
                 print('Pilihan Anda Tidak Terdaftar')
 
         
-    ##### DELETE #####
+    ##### DELETE ##### -----------------------------------------------------------------------------------------------------------------------
     elif pilih_menu == "4":
         while True:
             print('1. Hapus Reservasi\n2. Kembali Ke Menu Utama')
@@ -183,11 +199,11 @@ while True:
                 print('Pilihan Anda Tidak Terdaftar')
                 
 
-            
+##### CLOSE #####------------------------------------------------------------------------------------------------------------------
     elif pilih_menu == "5" :
         print('\nKeluar dari Menu')
         break
     else :
         print('\nPilihan Menu Anda Tidak Terdaftar')
     
- 
+
